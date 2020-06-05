@@ -28,6 +28,9 @@ import 'echarts/lib/component/polar'
 import 'echarts'
 Vue.component('v-chart', ECharts)
 
+// MD5
+import MD5 from 'js-md5'
+
 Vue.use(Vuetify)
 Vue.use(MuseUI)
 Vue.use(MaterialIcons)
@@ -50,6 +53,11 @@ Object.defineProperty(Vue.prototype, "$moment", {
 
 Object.defineProperty(Vue.prototype, "$axios", {
 	value: axios,
+	writable: true
+})
+
+Object.defineProperty(Vue.prototype, "$MD5", {
+	value: MD5,
 	writable: true
 })
 

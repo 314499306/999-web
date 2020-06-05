@@ -45,7 +45,7 @@
 		},
 		methods:{
 			submit() {
-				this.$axios.post("http://localhost:85/user/login", this.user).then((res) => {
+				this.$axios.get(process.env.VUE_APP_SERVICE+"/user/login/" + this.user.code + "/" + this.$MD5(this.user.password)).then((res) => {
 						const us = res.data
 						if (!us.success) {
 							this.$museUIToast.error("登录失败：" + us.meta.message);
@@ -61,7 +61,7 @@
 			},
 			
 			ok(params) {
-				this.$axios.post("http://localhost:85/user/insert", this.dialog).then((res) => {
+				this.$axios.post(process.env.VUE_APP_SERVICE+"/user/register", this.dialog).then((res) => {
 						const us = res.data
 						if (!us.success) {
 							this.$museUIToast.error("创建用户失败：" + us.meta.message);
